@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# centos returns 100 code for check-update
 set -e
 
 . /etc/os-release
