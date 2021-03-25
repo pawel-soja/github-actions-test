@@ -28,11 +28,11 @@ jobs:
       - name: Cache Linux Repository
         uses: actions/cache@v2
         with:
-          path: |
-            /var/cache/apt
-            /var/cache/yum
-            /var/cache/dnf
+          path: /var/cache
           key: ${{ runner.os }}-${{ matrix.container }}-linux-repository
+
+      - name: Enable Linux Cache
+        run: rf -f /etc/apt/apt.conf.d/docker-clean
 
       - name: Get Source
         uses: actions/checkout@v2
