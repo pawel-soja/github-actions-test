@@ -13,13 +13,21 @@ whoami
 echo "command whoami"
 $(command -v sudo) whoami
 
+echo "Try to install cmake"
 case $ID in
     debian|ubuntu)
-        echo "Hello Debian or Ubuntu";;
+        echo "Hello Debian/Ubuntu"
+        apt-get -qq update
+        apt-get -qqy install cmake
+        ;;
     fedora)
         echo "Hello Fedora";;
+        dnf -y install cmake
     centos)
         echo "Hello Centos";;
+        yum -y install cmake
     *)
+        echo "Unknown system"
+        cat /etc/os-release
         exit 1;;
 esac
