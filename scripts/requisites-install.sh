@@ -19,7 +19,7 @@ case $ID in
     fedora)
         echo "Hello Fedora";;
     centos)
-        echo "Hello Fedora";;
+        echo "Hello Centos";;
     *)
         exit 1;;
 esac
