@@ -1,0 +1,31 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        container: ["ubuntu:bionic", "debian:buster", "debian:stretch"]
+
+    container:
+      image: ${{ matrix.container }}
+
+    steps:
+      - name: Container Information
+        id: container-info
+        run: echo ::set-output name=name::$(echo ${{ matrix.container }} | sed 's/[:\\]/-/g')
+
+      - name: Get Source
+        uses: actions/checkout@v2
+
+      - name: Install Pre-requisites
+        run: scripts/requisites-install.sh
