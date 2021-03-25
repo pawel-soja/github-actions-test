@@ -8,9 +8,9 @@ set -e
 case $ID in
     debian|ubuntu)
         # command ubuntu unknown fail
-        apt-get update
+        $(command -v sudo) apt-get update
         # apt-get -qqy dist-upgrade
-        apt-get -y install \
+        $(command -v sudo) DEBIAN_FRONTEND=noninteractive apt-get -y install \
             libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev \
             libgsl-dev build-essential cmake git libjpeg-dev \
             libcurl4-gnutls-dev libtiff-dev libfftw3-dev
