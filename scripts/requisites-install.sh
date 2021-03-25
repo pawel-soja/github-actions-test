@@ -3,11 +3,9 @@
 set -e
 
 . /etc/os-release
-ls -l /var/cache/
 
 case $ID in
     debian|ubuntu)
-        ls -l /var/cache/apt/archives/
         export DEBIAN_FRONTEND=noninteractive
         $(command -v sudo) apt-get update
         $(command -v sudo) apt-get -y install \
@@ -16,7 +14,6 @@ case $ID in
             libcurl4-gnutls-dev libtiff-dev libfftw3-dev
         ;;
     fedora)
-        # ls -l /var/cache/dnf
         $(command -v sudo) dnf -y install \
             libnova-devel cfitsio-devel libusb-devel zlib-devel \
             gsl-devel cmake git libjpeg-devel \
@@ -24,7 +21,6 @@ case $ID in
             gcc-c++
         ;;
     centos)
-        # ls -l /var/cache/yum
         $(command -v sudo) yum -y install epel-release
         $(command -v sudo) yum -y upgrade
         $(command -v sudo) yum -y install \
