@@ -3,6 +3,7 @@
 set -e
 
 . /etc/os-release
+ls -l /var/cache/
 
 case $ID in
     debian|ubuntu)
@@ -15,7 +16,7 @@ case $ID in
             libcurl4-gnutls-dev libtiff-dev libfftw3-dev
         ;;
     fedora)
-        ls -l /var/cache/dnf
+        ls -l /var/cache/yum
         $(command -v sudo) dnf -y install \
             libnova-devel cfitsio-devel libusb-devel zlib-devel \
             gsl-devel cmake git libjpeg-devel \
