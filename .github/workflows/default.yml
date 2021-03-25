@@ -39,3 +39,10 @@ jobs:
 
       - name: Install Pre-requisites
         run: scripts/requisites-install.sh
+
+        # Artifacts
+      - name: Archive Linux Cache
+        uses: actions/upload-artifact@v2
+        with:
+          name: cache-${{ steps.container-info.outputs.name }}
+          path: /var/cache/
