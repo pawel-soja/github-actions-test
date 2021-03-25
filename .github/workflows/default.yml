@@ -27,7 +27,7 @@ jobs:
         # Fixes
       - name: openSUSE Fixes
         if: ${{ contains(matrix.container, 'opensuse') }}
-        run: zypper -y install tar
+        run: zypper install -y tar
 
       # Cache
       - name: Cache Linux Repository
