@@ -7,8 +7,8 @@
 echo "whoami"
 whoami
 
-echo "which whoami"
-$(which sudo) whoami
+# echo "which whoami"
+# $(which sudo) whoami
 
 echo "command whoami"
 $(command -v sudo) whoami
