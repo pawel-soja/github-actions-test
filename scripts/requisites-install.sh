@@ -18,6 +18,7 @@ case $ID in
     debian|ubuntu)
         echo "Hello Debian/Ubuntu"
         apt-get -qq update
+        apt-get -qqy dist-upgrade
         apt-get -qqy install cmake
         ;;
     fedora)
