@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# centos returns 100 code for check-update
 set -e
 
 . /etc/os-release
@@ -7,9 +8,9 @@ set -e
 case $ID in
     debian|ubuntu)
         # command ubuntu unknown fail
-        apt-get -qq update
+        apt-get update
         # apt-get -qqy dist-upgrade
-        apt-get -qqy install \
+        apt-get -y install \
             libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev \
             libgsl-dev build-essential cmake git libjpeg-dev \
             libcurl4-gnutls-dev libtiff-dev libfftw3-dev
@@ -22,7 +23,7 @@ case $ID in
             gcc-c++
         ;;
     centos)
-        $(command -v sudo) yum check-update
+        # $(command -v sudo) yum check-update
         $(command -v sudo) yum -y install \
             libnova-devel libcfitsio-devel libusb-1.0-0-devel zlib1g-devel \
             libgsl-devel build-essential cmake git libjpeg-devel \
