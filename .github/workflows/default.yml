@@ -24,6 +24,16 @@ jobs:
         id: container-info
         run: echo ::set-output name=name::$(echo ${{ matrix.container }} | sed 's/[:\\]/-/g')
 
+      # Cache
+      - name: Cache Repository
+        uses: actions/cache@v2
+        with:
+          path: |
+            /var/cache/apt
+            /var/cache/yum
+            /var/cache/dnf
+          key: ${{ runner.os }}-${{ matrix.container }}-apt-package
+
       - name: Get Source
         uses: actions/checkout@v2
 
