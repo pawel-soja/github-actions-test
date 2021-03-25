@@ -36,5 +36,3 @@ case $ID in
         exit 1
         ;;
 esac
-
-ls -l /var/cache/
