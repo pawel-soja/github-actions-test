@@ -1,36 +1,30 @@
 #!/bin/bash
 
+set -e
+
 . /etc/os-release
 
-# cat /etc/os-release
-
-echo "whoami"
-whoami
-
-# echo "which whoami"
-# $(which sudo) whoami
-
-echo "command whoami"
-$(command -v sudo) whoami
-
-echo "Try to install cmake"
 case $ID in
     debian|ubuntu)
-        echo "Hello Debian/Ubuntu"
-        apt-get -qq update
-        apt-get -qqy dist-upgrade
-        apt-get -qqy install cmake
+        $(command -v sudo) apt-get -qq update
+        $(command -v sudo) apt-get -qqy dist-upgrade
+        $(command -v sudo) apt-get -qqy install \
+            libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev \
+            libgsl-dev build-essential cmake git libjpeg-dev \
+            libcurl4-gnutls-dev libtiff-dev libfftw3-dev
         ;;
     fedora)
-        echo "Hello Fedora"
-        dnf -y install cmake
+        $(command -v sudo) dnf -y install \
+            libnova-devel libcfitsio-devel libusb-1.0-0-devel zlib1g-devel \
+            libgsl-devel build-essential cmake git libjpeg-devel \
+            libcurl4-gnutls-devel libtiff-devel libfftw3-devel
         ;;
     centos)
         echo "Hello Centos"
         yum -y install cmake
         ;;
     *)
-        echo "Unknown system"
+        echo "Unknown Linux Distribution"
         cat /etc/os-release
         exit 1
         ;;
