@@ -8,7 +8,7 @@ case $ID in
     debian|ubuntu)
         # command ubuntu unknown fail
         apt-get -qq update
-        apt-get -qqy dist-upgrade
+        # apt-get -qqy dist-upgrade
         apt-get -qqy install \
             libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev \
             libgsl-dev build-essential cmake git libjpeg-dev \
