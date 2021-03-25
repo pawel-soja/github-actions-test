@@ -32,7 +32,7 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.container }}-linux-repository
 
       - name: Enable Linux Cache
-        run: rf -f /etc/apt/apt.conf.d/docker-clean
+        run: rm -f /etc/apt/apt.conf.d/docker-clean
 
       - name: Get Source
         uses: actions/checkout@v2
