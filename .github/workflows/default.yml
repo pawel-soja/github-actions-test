@@ -23,6 +23,11 @@ jobs:
       - name: Container Information
         id: container-info
         run: echo ::set-output name=name::$(echo ${{ matrix.container }} | sed 's/[:/]/-/g')
+      
+        # Fixes
+      - name: openSUSE Fixes
+        if: ${{ contains(matrix.container, 'opensuse') }}
+        run: zypper -y install tar
 
       # Cache
       - name: Cache Linux Repository
