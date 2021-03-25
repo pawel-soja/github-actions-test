@@ -7,9 +7,9 @@ set -e
 
 case $ID in
     debian|ubuntu)
-        # command ubuntu unknown fail
+        export DEBIAN_FRONTEND=noninteractive
         $(command -v sudo) apt-get update
-        $(command -v sudo) DEBIAN_FRONTEND=noninteractive apt-get -y install \
+        $(command -v sudo) apt-get -y install \
             libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev \
             libgsl-dev build-essential cmake git libjpeg-dev \
             libcurl4-gnutls-dev libtiff-dev libfftw3-dev
@@ -30,7 +30,7 @@ case $ID in
             libcurl4-gnutls-devel libtiff-devel libfftw3-devel
         ;;
 
-        # CentOS dont have libnova-devel package
+        # CentOS 8 dont have libnova-devel package
     *)
         echo "Unknown Linux Distribution"
         cat /etc/os-release
