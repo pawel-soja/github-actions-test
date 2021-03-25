@@ -25,14 +25,14 @@ jobs:
         run: echo ::set-output name=name::$(echo ${{ matrix.container }} | sed 's/[:\\]/-/g')
 
       # Cache
-      - name: Cache Repository
+      - name: Cache Linux Repository
         uses: actions/cache@v2
         with:
           path: |
             /var/cache/apt
             /var/cache/yum
             /var/cache/dnf
-          key: ${{ runner.os }}-${{ matrix.container }}-apt-package
+          key: ${{ runner.os }}-${{ matrix.container }}-linux-repository
 
       - name: Get Source
         uses: actions/checkout@v2
