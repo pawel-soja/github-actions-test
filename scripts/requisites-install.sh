@@ -24,6 +24,9 @@ case $ID in
         ;;
     centos)
         # $(command -v sudo) yum check-update
+
+        $(command -v sudo) yum -y install epel-release
+        $(command -v sudo) yum -y upgrade
         $(command -v sudo) yum -y install \
             libnova-devel libcfitsio-devel libusb-1.0-0-devel zlib1g-devel \
             libgsl-devel build-essential cmake git libjpeg-devel \
