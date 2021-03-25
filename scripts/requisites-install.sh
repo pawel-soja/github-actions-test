@@ -21,13 +21,16 @@ case $ID in
         apt-get -qqy install cmake
         ;;
     fedora)
-        echo "Hello Fedora";;
+        echo "Hello Fedora"
         dnf -y install cmake
+        ;;
     centos)
-        echo "Hello Centos";;
+        echo "Hello Centos"
         yum -y install cmake
+        ;;
     *)
         echo "Unknown system"
         cat /etc/os-release
-        exit 1;;
+        exit 1
+        ;;
 esac
