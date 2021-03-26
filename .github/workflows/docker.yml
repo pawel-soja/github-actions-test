@@ -1,0 +1,41 @@
+name: Docker
+on:
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        container: ["debian-stretch"]
+
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Get Source
+        uses: actions/checkout@v2
+      -
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./docker/Dockerfile.${{ matrix.containter }}
+          push: true
+          tags: ${{ github.actor }}/${{ matrix.containter }}
+      -
+        name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
