@@ -17,7 +17,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
@@ -26,4 +26,4 @@ jobs:
         with:
           file: ./.github/docker/Dockerfile.${{ matrix.container }}
           push: true
-          tags: ghcr.io/${{ github.actor }}/${{ matrix.container }}
+          tags: ghcr.io/${{ github.repository_owner }}/${{ matrix.container }}
