@@ -11,6 +11,6 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-#      - name: Get Source
-#        uses: actions/checkout@v2
+      - name: Get Source
+        uses: actions/checkout@v2
       - run: scripts/test.sh
