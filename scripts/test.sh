@@ -6,3 +6,8 @@
 # nproc
 
 brew install git
+
+pushd /tmp
+
+pwd
+popd
