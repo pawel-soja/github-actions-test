@@ -1,9 +1,9 @@
 name: CI
 on:
   push:
-    branches: [ master2 ]
+    branches: [ master ]
   pull_request:
-    branches: [ master2 ]
+    branches: [ master ]
 
   workflow_dispatch:
 
@@ -11,8 +11,10 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - name: Get Source
-        uses: actions/checkout@v2
+#      - name: Get Source
+#        uses: actions/checkout@v2
 
       - name: Install Pre-requisites
-        run: scripts/requisites-install.sh
+        run: |
+          whoami
+          nproc
