@@ -25,6 +25,13 @@ jobs:
 #        with:
 #          username: ${{ github.actor }}
 #          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       -
         name: Get Source
         uses: actions/checkout@v2
