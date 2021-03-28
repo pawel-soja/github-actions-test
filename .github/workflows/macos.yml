@@ -14,8 +14,8 @@ jobs:
 #      - name: Get Source
 #        uses: actions/checkout@v2
 
-      - run: alias nproc="sysctl -n hw.logicalcpu"
       - name: Install Pre-requisites
         run: |
+          alias nproc="sysctl -n hw.logicalcpu"
           whoami
           nproc
