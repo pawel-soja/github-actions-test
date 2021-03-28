@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        container: ["debian", "ubuntu", "fedora"]
+        container: ["debian", "ubuntu", "fedora", "centos"]
 
     steps:
       - name: Login to Registry
