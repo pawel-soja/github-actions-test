@@ -13,6 +13,23 @@ set -e
 #    libgsl-dev libjpeg-dev libfftw3-dev
 #
 
+(cat <<EOF
+
+struct Foo
+{
+    bool test() const { return this == nullptr; }
+};
+
+int main()
+{
+    Foo foo;
+    return foo.test() ? 1 : 0;
+}
+EOF
+) | g++ -x c++ - -o /tmp/a
+
+exit
+
 brew install \
     git \
     cfitsio libnova libusb curl \
