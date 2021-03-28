@@ -35,9 +35,9 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          context: ./docker/Dockerfile.${{ matrix.containter }}
+          context: ./docker/Dockerfile.${{ matrix.container }}
           repository: my-org/my-repo/my-image
-          tags: ${{ github.actor }}/${{ matrix.containter }}
+          tags: ${{ github.actor }}/${{ matrix.container }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
