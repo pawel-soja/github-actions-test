@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Get Source
         uses: actions/checkout@v2
-      - run: scripts/test.sh
+      - run: scripts/requisites-install.sh
