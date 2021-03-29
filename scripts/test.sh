@@ -19,6 +19,7 @@ brew install \
     gsl jpeg fftw
 
 tar --help
+bsdtar --help
 exit 0
 pushd /tmp
 git clone --depth=1 --branch=fix-macos https://github.com/indilib/indi.git
