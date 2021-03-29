@@ -24,5 +24,5 @@ git clone --depth=1 --branch=fix-macos https://github.com/pawel-soja/indi.git
 ./indi/scripts/googletest-install.sh && \
 ./indi/scripts/indi-core-build.sh && \
 ./indi/scripts/indi-core-install.sh && \
-./indi/scripts/indi-core-test.sh && \
+./indi/scripts/indi-core-test.sh
 popd
