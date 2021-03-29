@@ -2,6 +2,10 @@
 
 set -e
 
+ls -l /etc/
+cat /etc/*-release
+
+exit 0
 # alias nproc="sysctl -n hw.logicalcpu"
 # whoami
 # nproc
