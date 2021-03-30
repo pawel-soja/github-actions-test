@@ -1,0 +1,10 @@
+name: Windows
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Get Source
+        uses: actions/checkout@v2
+      - run: git
