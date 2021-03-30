@@ -2,31 +2,23 @@
 
 set -e
 
-ls -l /etc/
-cat /etc/*-release
-
-exit 0
-# alias nproc="sysctl -n hw.logicalcpu"
-# whoami
-# nproc
-
-# apt-get update && apt-get -y upgrade && apt-get install -y \
-#    git \
-#    cmake build-essential zlib1g-dev \
-#    libcfitsio-dev libnova-dev libusb-1.0-0-dev libcurl4-gnutls-dev \
-#    libgsl-dev libjpeg-dev libfftw3-dev
-#
-
-brew install \
-    git \
-    cfitsio libnova libusb curl \
-    gsl jpeg fftw
-
 pushd /tmp
-git clone --depth=1 --branch=fix-warnings-macos https://github.com/indilib/indi.git
+
+git clone --depth=1 --branch=master https://github.com/indilib/indi.git
+./indi/scripts/requisites-install.sh && \
 ./indi/scripts/googletest-build.sh && \
 ./indi/scripts/googletest-install.sh && \
 ./indi/scripts/indi-core-build.sh && \
 ./indi/scripts/indi-core-install.sh && \
 ./indi/scripts/indi-core-test.sh
+
+apt-get install -y python3 python3-dev python3-setuptools
+git clone --depth=1 https://github.com/geehalel/pyindi-client.git
+
+pushd pyindi-client
+python3 ./setup.py install
+python3 -c "import PyIndi"
+popd
+
+
 popd
