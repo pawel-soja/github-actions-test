@@ -7,4 +7,4 @@ command -v nproc >/dev/null 2>&1 || function nproc {
         echo "3"
 }
 
-echo $(nproc)
+echo $(($(nproc)+1))
