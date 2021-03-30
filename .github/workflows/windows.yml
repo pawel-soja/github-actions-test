@@ -7,4 +7,6 @@ jobs:
     steps:
       - name: Get Source
         uses: actions/checkout@v2
-      - run: cmake -DINDI_BUILD_SERVER=OFF -DINDI_BUILD_DRIVERS=OFF .
+        repository: indilib/indi
+        path: ./indi
+      - run: cd indi && cmake -DINDI_BUILD_SERVER=OFF -DINDI_BUILD_DRIVERS=OFF .
