@@ -4,6 +4,9 @@ set -e
 
 pushd /tmp
 
+whoami
+$(command -v sudo) whoami
+
 git clone --depth=1 --branch=master https://github.com/indilib/indi.git
 ./indi/scripts/requisites-install.sh && \
 ./indi/scripts/googletest-build.sh && \
@@ -12,7 +15,7 @@ git clone --depth=1 --branch=master https://github.com/indilib/indi.git
 ./indi/scripts/indi-core-install.sh && \
 ./indi/scripts/indi-core-test.sh
 
-apt-get install -y python3 python3-dev python3-setuptools
+$(command -v sudo) apt-get install -y python3 python3-dev python3-setuptools
 git clone --depth=1 https://github.com/geehalel/pyindi-client.git
 
 pushd pyindi-client
