@@ -1,16 +1,12 @@
 #!/bin/bash
 
 (cat <<EOF
-
-struct Foo
-{
-    bool test() const { return reinterpret_cast<const void*>(this) == nullptr; }
-};
-
+#include <stdio.h>
+extern char *__progname;
 int main()
 {
-    Foo foo;
-    return foo.test() ? 1 : 0;
+    printf("progname: %s\n", __progname);
 }
 EOF
-) | clang -x c++ -std=c++11 - -o /tmp/a
+) | clang -x c++ -std=c++11 - -o /tmp/application
+/tmp/application
